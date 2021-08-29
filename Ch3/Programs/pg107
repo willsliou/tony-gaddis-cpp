@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main(){
+int store1, store2, store3;
+  int begInv;
+
+  std::cin >> begInv;
+    store1 = store2 = store3 = begInv;
+
+  int itemssold1, itemssold2, itemssold3;
+  std::cout << "Items sold store 1";
+  std::cin >> itemssold1;
+  store1 -= itemssold1;
+
+  std::cout << "Items sold store 2";
+  std::cin >> itemssold2;
+  store2 -= itemssold2;
+
+  std::cout << "Items sold store 3";
+  std::cin >> itemssold3;
+  store3 -= itemssold3;
+  
+    std::cout << "Final";
+  std::cout << store1 << std::endl << store2<< std::endl<< store3;
+  }

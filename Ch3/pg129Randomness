@@ -1,0 +1,38 @@
+// Randomness
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+#include <cstdlib> //rand srand
+#include <ctime>
+using namespace std;
+
+// setprecision()>> fixed - starts counting at decimal point
+//setprecision(2) << 2.718 will bew--> 2.17
+//setprecision() >> showpoint - shows trailing 0's
+
+// careful with cin
+// cin stops reading when encountering whitespace; the input is still there and is put into the next cin 
+// cin.get() -> can take in empty Enter presses 
+// cin.ignore(20,'\n'); skip next 20 characters for white space or until newline is encountered
+
+
+// generate randomness
+// seed variable that's positive unsigned mySeed = time(0);
+// srand(mySeed) // seed for rand
+//call rand()
+int main() {
+    const int minValue = 1;
+    const int maxValue = 2;
+    int dice1, dice2;
+
+    unsigned mySeed = time(0); // gets time
+    srand(mySeed); // seed number generator
+    // cout << rand() << endl;
+    // cout << rand() << endl;
+    // cout << rand() << endl;
+
+    dice1 = rand() % (maxValue - minValue +1) +minValue;
+    dice2 = rand() % (maxValue - minValue +1) +minValue;
+    cout << dice1 << endl << dice2 << endl;
+}   

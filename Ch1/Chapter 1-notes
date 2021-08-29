@@ -1,0 +1,30 @@
+> Concept: Computers can do many different jobs beause they are programmable.
+
+Programs should be carefully designed
+The following is designed for real world program:
+* Logical flow of the instructions (code)
+* Mathematical procedures (logic)
+* Appearance of the screens (design()
+* Way information is presented to user (UI)
+* Program user-friendliness (UI)
+* Manuals, written documentation (docs)
+
+1. Hardware - system of devices
+  1. The central processing unit (CPU)
+  2. Main memory (RAM)
+  3. Secondary storage devices (SSD solid state drive, HDD hard disk drive)
+  4. Input devices (Keyboard, mouse, usb)
+  5. Output devices (speakers, monitor, printers)
+  
+2. CPU (central processing unit)
+  Job: Fetch and follow instructions (input), and produce a result (output)
+  The CPU is consisted of two parts that interact with each other: 
+    ** Control unit ** *coordinates computer operations; *
+    **Arithmetic and logic unit** *performs mathematical operations*
+  
+  Whenever a CPU runs a program, it goes through these sequence of steps:
+  1. Fetch - from the control unit, fetch instructions from main memory
+  2. Decode - decode instruction, generate electrical signal
+  3. Execute - route signal to desginated computer device 
+Main memory - RAM (random access memory)
+1. Holds memory

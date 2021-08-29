@@ -1,0 +1,16 @@
+// Integer uses whole numbers, double uses fractional numbers, character uses letters 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  int whole;
+  double fractional;
+  char letter;
+  
+  cout << "Enter a integer (whole), double (fractional), character (letter) ";
+  cin >> whole >> fractional >> letter;
+  cout << "Integer (whole): " << whole << endl;
+  cout << "Double (fractional): " << fractional << endl;;
+  cout << "Character (letter): " << letter << endl;
+}

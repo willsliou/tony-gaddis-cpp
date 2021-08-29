@@ -1,0 +1,1217 @@
+
+\documentclass[a4paper,12pt]{book}
+% article doesn't support chapter; it supports section, subsection
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage{verbatim} % multi-line comments
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref} % hyperlinks
+\usepackage{longtable}
+\usepackage{listings} % for code blocks
+\lstset{language=C++}  
+\lstdefinestyle{customc}{
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=L,
+	xleftmargin=\parindent,
+	language=C,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{
+	belowcaptionskip=1\baselineskip,
+	frame=L,
+	xleftmargin=\parindent,
+	language=[x86masm]Assembler,
+	basicstyle=\footnotesize\ttfamily,
+	commentstyle=\itshape\color{purple!40!black},
+}
+
+\lstset{escapechar=@,style=customc}
+
+
+
+% From stack overflow
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape} % format
+{Story No. \ \thechapter} % label
+{0.5ex} % sep
+{
+	\rule{\textwidth}{1pt}
+	\vspace{1ex}
+	\centering
+} % before-code
+[
+\vspace{-0.5ex}%
+\rule{\textwidth}{0.3pt}
+] % after-code
+
+
+\titleformat{\section}[wrap]
+{\normalfont\bfseries}
+{\thesection.}{0.5em}{}
+
+\titlespacing{\section}{12pc}{1.5ex plus .1ex minus .2ex}{1pc}
+
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\urlstyle{same}
+\frontmatter
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\useunder{\uline}{\ul}{} 
+\usepackage{tikz} % for array DS
+\usetikzlibrary{calc} % for array DS
+
+
+
+\title{C++ Notes}
+\author{Wills Liou}
+
+
+
+
+\begin{document}
+
+	\tableofcontents
+
+
+\chapter{Java vs C++}
+https://softwareengineering.stackexchange.com/questions/269447/will-a-profound-knowledge-of-c-help-you-in-learning-other-languages-faster-eas
+
+Learning C++ before Java is more beneficialy because if you know the WHY"s (how something is done at a fundamental level) then you have the roots to grow. 
+
+
+\section{Interpreter vs Compiler}
+https://www.youtube.com/watch?v=JNMy969SjyU
+C++ is a compiled language. Java is an interpreted language. However, Java does not directly compile into machine code. It goes through an intermediate step and gets compiled into bytecode and then finally into machine code. Bytecode is more similar to machine code than the source code. Therefore translation is faster. Bytecode can be compiled with the JIT compile into machine code.
+
+
+Java is different from C++ from three ways:
+\begin{enumerate}
+	\item Automated memory management
+	\item Simplified syntax and no preprocessor
+	\item Java standard libraries
+\end{enumerate}
+
+\chapter{Deep Understanding of Syntax}
+<iostream>
+	Here iostream is a library.	COUT and CIN are OBJECTS. The cout stands for "console out"
+		
+	
+\section{Summary}
+	<< is an insertion operator \\
+	:: is a scope resolution \\ 
+	= is an "ASSIGNMENT OPERATOR" \\
+	== is a "comparison operator" \\
+	< is less than \\
+	5 < 3    five is less than 3 \\
+	> is greater than \\ 
+	2 > 1 \\
+	2 is greater than 1 \\ 
+
+	
+Program is set of two ingredients: 
+\begin{enumerate}
+	\item 	data
+	\item operations performed on data
+\end{enumerate}	
+
+
+	% MEMORY	
+	1 byte = 8 bits
+	
+	% BYTES
+	Maximum integer in 1 byte (8 bits) is 255.
+	
+	\href{https://www.sciencedirect.com/topics/engineering/binary-word}{Formula for maximum binary value for N bits} \\
+	\section{Formula to calculate maximum decimal value for N bits.}
+Our standard equation \\
+		$$M = 2^{N} - 1$$
+	Example:	
+		$$255 = 2^{8} - 1$$
+
+
+\chapter{25. Primitive Data Types}
+
+\begin{table}[]
+\begin{tabular}{ccc}
+\hline
+{Data Type}               & {Size (bytes) }               & {Range}               \\ \hline
+\textbf{int}            & \textbf{2 or 4}            & \textbf{-32,768 -to 32,767}      \label{int}   \\ 
+\textit{float}                    &4                      &$-3.4 \times 10^{-38}$ to $3.4 \times 10^{38}$     \label{float}             \\
+\textit{double}                     &8                      & $-1.7 \times 10^{-308}$ to $1.7 \times 10^{308}$       \label{double}     \\ \hline
+\textbf{char}            & \textbf{1}            & \textbf{-128 to 127}            \\
+bool                     &undefined                      &true/false                      \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} 
+\end{tabular}
+\end{table}
+
+\textbf{How to memorize range for \ref{float} floats and \ref{double} doubles} \\
+Realize that doubles have an extra \textbf{zero} in the power \\
+floats are \textbf{$10^{38}$} and doubles are \textbf{$10^{308}$}
+
+\textbf{Float range}: $-3.4 \times 10^{-38}$ to $3.4 \times 10^{38}$ \\
+\textbf{Double range}:  $-1.7 \times 10^{-308}$ to $1.7 \times 10^{308}$ \\
+\textbf{multiply} double's range and get float's number;  \\
+$1.7 \times 2 = 3.4$
+Other data types: 1. long 2.long long (for really long decimals)
+
+
+\section{Proving the int range is {-32,768 -to 32,767} } 
+\begin{table}
+\centering
+\begin{tabular}{lllllllllllllllllll}
+ &16  &15  &  &  &  &  &  &  &  &  &  &  &  &  &  &   
+\end{tabular}
+\end{table}
+
+This is our array for 2 bytes (16 bits) \\
+Assume the numbers inside each index are it's index value \\
+Notation:
+Most significant byte (MSB), Least significant byte (LSB) \\
+-ve stands for negative
++ve stands for positive
+
+Known: 1 byte = 8 bits. \\
+If we have two bytes, we will have 16 bits. Let's assume that our int data type takes in two bytes (in some old compiler).
+
+\begin{enumerate}
+	\item Assume 2 bytes (16 bits)
+	\item Most significant bit (MSB) reserves the first spot for the sign; In other words, MSB takes one spot for a (1) -ve or (0) +ve
+	\item Excluding the MSB, there are 15 bits left for the integer.
+	\item Therefore $2^{15} = 32768$	
+		\begin{enumerate}
+			\item $32,768$ is the maximum number from the \textit{range 1 to 32,768}
+			\item So, our int data type can take in a max number, 32,768.
+		\end{enumerate}
+	\item If we want a range starting from 0, our range is now \textit{range of 0 to 32,767}
+	\item   Range visually represented as:  0     \hspace{1cm}  ...     32,767
+	\item Reminder: we know that one bit is reserved at MSB (first index) for positive and negative signs. 
+	\item  So if we include the negative side from -32767 to -0, our range looks like this
+	\item -32,767  \hspace{1cm}        -0 \hspace {1cm} 0 \hspace {1cm} 32,767
+	
+	\item But realize that -0 does not exist; we add one more value to the negative side to account for our -0
+	\item -32,767 + 1  \hspace {1cm} 0 \hspace {1cm} 32,767	
+	\item -32,768  \hspace {1cm} 0 \hspace {1cm} 32,767
+	\item Therefore our int data type range is from \textit{-32,768 to 0 to 32,767}
+\end{enumerate}	
+
+Question at step \#9: How do we have enough memory for the negative side if our maximum number is 32,768? \\
+Answer: Look at two's complement; when we reach our one more than maximum value of 32,768, (e.g. 32,769), we actually overflow and get -1. 
+
+\href{https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html}{Two's Complement} \\
+
+In practice, it looks like this:
+\begin{center}
+\begin{table}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} % 'c' stands for center; 'l' stands for left align
+        \hline
+        ~1 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~1 \\
+        \hline
+    \end{tabular}
+\end{table}
+\end{center}
+
+% copy pasta from https://tex.stackexchange.com/questions/79369/formatting-table-border-and-text-alignment-in-latex-table
+\newdimen\boxitspace\boxitspace=3pt% boxit from eplain
+\long\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern\boxitspace\vbox{%
+  \kern\boxitspace\parindent0pt#1\kern\boxitspace}%
+  \kern\boxitspace\vrule}\hrule}}
+\def\aryitem#1{\boxit{\hbox to 1.4em{\hfil#1\hfil}}}% change 1.4em if needed
+\let\MS\multispan% shorten a little
+\halign{&\thinspace\aryitem{$\mathstrut#$}\thinspace\cr
+  5&2&7&-5&16&12&\omit\quad&?&?&?&?&?&?\cr
+  \MS6\upbracefill&\omit&\MS6\upbracefill\cr
+  \MS6\hfill size $=6$\hfill&\omit&\MS6\hfill free space\hfill\cr
+  \MS{13}\upbracefill\cr
+  \MS{13}\hfill capacity $=12$\hfill\cr
+}
+
+
+
+\section{Proving the char range is -128 to 127}
+  \begin{enumerate}
+    \item The data type, char, is 1 byte or 8 bits.
+    \item We reserve the first bit (MSB) for the positive and negative signs.
+    \item Therefore, we are left with 7 bits.
+    \item So we have $2^{7} = 128$
+    \begin{enumerate}
+      \item our values for char is the range \textit{1 to 128}
+    \end{enumerate}
+    \item When we begin at 0, our range becomes \textit{0 to 127}
+    \item To account for the negative side, we have \textit{-127  -0  0  127}
+    \item To fix the -0, we add one more value to our negative side, our final range is \textit{-127  0  127}
+  \end{enumerate} 
+   This had many similiar to our int range proof.
+
+  For unsigned(only positive) integers, add back the first bit that stores the negative and positive values. Aka. use all 16 bits (2 bytes in integer data type)
+  One way:
+  \begin{enumerate}
+  \item Instead of $2^{15} = 32,768$, we will have $2^{16} = 65,536$.
+  \item With a range starting from 0, \textit{0 to 65,535}
+  \item Therefore, unsigned int has a range from \textit{0 to 65,535}
+  \end{enumerate}
+  Other way: Add the min and max values of an int range \textit{-32,768 to 0 to 32,767}
+  \begin{enumerate}
+    \item $32spo
+    q ,768 + 32,767 = 65,535$
+    \item Therefore, unsigned int has a range from \textit{0 to 65,535}
+  \end{enumerate}
+
+  \section{Remember these ASCII Codes}
+a = 97 ... z = 122; 0 -> 49 ... 9 -> 57
+  \begin{center}
+    \begin{tabular}{ c c c }
+    A = 65 & a = 97 & '0' = 48 \\
+    B = 66 & b = 98 & '1' = 49 \\
+      .                     \\  
+      . \\
+      .\\ 
+    Z = 90
+    \end{tabular}
+  \end{center}
+
+
+  \begin{center}
+    Data Types
+  \begin{tabular}{ c c }
+    Data Type & Range value
+    int \& -37,768 to 37,767 \\ (15 bits used with 1 reserved)
+    char & -128 to 127 (8 bits used with 1 reserved)
+    unsigned int \& 0 to 65,535 (all 16 bits or 2 bytes are used)
+    unsigned char \& 0 to 255 (all 8 bits are used)
+    long int \& if int is 2 bytes, then long int is 4 bytes or (if int is 4 bytes, then long int is 8 bytes
+    long float (does not exist, it is a long double )
+    long double  10 bytes
+  \end{tabular}
+\end{center}
+
+
+\section{Division with data types}
+Integer division /
+
+int / int works
+float / int will result in a float
+
+NOTE: \% can only divide with modular
+int \% int works
+
+\section{Operator precedence}
+Operator associativity
+\hyperlink{https://www.geeksforgeeks.org/operator-precedence-and-associativity-in-c/}
+Associativity is the grouping of the first operation to take place
+If two operators have the same precedence, then associativity would be left to right. For example, + and - have the same precedence.
+
+
+
+\section{Random Numbers}
+Gaddis Textbook - Understanding random numbers
+include two standard libraries
+randomize with srand()
+
+MIN and MAX values
+\begin{lstlisting}[language=C++]
+  const int MIN_VALUE = 1;
+  const int MAX_VALUE = 10; 
+  y = (rand() \% (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE);
+\end{lstlisting}
+
+\begin{enumerate}
+  \item $MAX_VALUE - MIN_VALUE + 1$ in our equation gets the number of integers within our range.
+  \item y = (rand() % (10 - 1 + 1)) + MIN_VALUE;
+  \item If our max value was 11, we will have a remainder of 1; 
+  \item (rand() % (MAX_VALUE - MIN_VALUE + 1))
+  \item this part of the equation is equivalent of checking if an integer is divisible by some value 
+  \item e.g Checking if an integer is even. (someInt \% 2 == 0)
+  \item We add $MIN_VALUE$ because 
+\end{enumerate}
+
+
+30. Sum of all Natural Numbers N \\ 
+
+$sum = n * (n+1) / 2$ \\ 
+
+
+31. Finding the roots of a quadratic equation \\
+$ax^{2} + bx + c = 0$ \\ 
+Polynomic power of two means it's quadratic \\ 
+Root equation to find out the possible values of x \\ 
+$r=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+
+
+
+
+\chapter{35. Increment and Decrement}
+
+y = ++x
+1. First Increment
+2. Then ASSIGNMENT
+
+
+
+Undeclared and Uninitialized variables are random
+
+\begin{lstlisting}
+int my_variable; % this is random
+\end{lstlisting}
+
+\section{Prefix vs Postfix}
+Prefix assigns before incrementing ++x 
+Postfix increments then assigns  x++
+
+
+
+\begin{lstlisting}   
+ int x = 10,y;
+y = x++; // before you increment, you assign (y = 10)
+cout << y << endl;
+
+
+int a = 10, b;
+b = ++a;
+cout << b << endl;
+
+\end{lstlisting}
+
+\section{39. Bitwise Operators} 
+
+XOR (x-or) (exclusive or) \\
+both must be exclusive (one is 1 and other is 0) --> 1 \\
+if both are the same --> 0 \\
+
+\begin{lstlisting}
+    // int x=5, z = 10, y;
+    // // IDEA: multiply these x and z together and increment x, but we want the initial value of x (start at 5)
+    // y = ++x * z;
+
+    // cout << y << endl;
+ 
+    // int a=5,b;
+
+    // b = a++;
+\end{lstlisting}
+
+\begin{lstlisting}
+    // BITWISE OPERATORS (electronics)
+    // char x = 11, y = 5, z;
+    // z = x << 1; 
+    // cout << (int) z << endl;
+    day d;
+    d = tues;
+    cout << d << endl;
+\end{lstlisting}
+
+\section{Bitwise Operations}
+Finding the value of ~
+\begin{lstlisting}
+int z = 5;
+cout << (~z);
+// Calculating the value of ~z
+// 00000110 --> 5
+
+// 11111001 --> ~5
+//+       1
+// --------
+// 00000110--> Two's Complement
+//
+
+\end{lstlisting} 
+
+\section{78.  Finding Factorial}
+
+\begin{lstlisting}
+//    int n = 1;
+//    int fact = 1;
+//    for (int i = 1; i <= n; i++)
+//    {
+//        fact *= i;
+//    }
+//    while (n>0)
+//    {
+//        fact=fact*n;
+//        n = n-1;
+//    }
+//    cout << fact << endl;
+//
+//    cout << 6*5*4*3*2*1 << endl;
+
+\end{lstlisting}
+
+ \section{Enum and Typedef}
+ 
+\begin{lstlisting}
+    #include <iostream>
+using namespace std;
+
+enum day {mon=3, tues, wed, thurs, fri, sat, sun}; // these are constants
+
+int main() { 
+  typedef int marks;
+
+  marks m1, m2, m3;
+
+}
+
+\end{lstlisting}
+
+
+
+
+
+\chapter{For Loops}
+\section{89. For each loop}
+\begin{lstlisting}
+    // initialize with values
+    int A[] = {0,1,2,3,4,5};
+
+    cout << A << endl;
+    // iterating for each element in x;iterates the entire array
+
+    for(auto x:A) cout <<  x << endl; // assigns each value in A to the variable x
+
+    // For each loop vs for loop | for each loop doesn't need to know length of array, it's automatic
+    for(int x: A)
+
+    vs
+
+
+    }
+
+  % CODE
+\end{lstlisting}
+
+\begin{lstlisting}
+  int main() {
+    int A[] = {8,6,3,9,7,4};
+    cout << A << endl; // prints out memory address
+
+    for(auto x:A) cout <<  x << endl; // assigns each value in A to the variable x
+
+    for (auto x : A) 
+    {
+        // cout << ++x << endl;
+        cout << x + 2 << endl; // NOTE: x is a copy of the variables inside A. the variables inside A are not changed unless we use a reference &
+        // for (auto &x : A)     
+        cout << x << endl;
+    }
+    \end{lstlisting}
+    
+    
+\begin{lstlisting}
+        int number = 6;
+      int x = 0;
+      x = number--;
+      cout << x << endl;
+
+          int number = 6;
+      int x = 0;
+      x = --number;
+      cout << x << endl;
+  }
+      \end{lstlisting}
+  
+  \section{91. Finding maximum in Array}
+  \begin{lstlisting}
+  #include <iostream>
+  #include <chrono>
+  using namespace std;
+  
+  int main() {
+      int A[] = {8,6,3,9,7,4};
+  
+      // FIND THE MAXIMUM NUMBER IN THE ARRAY
+      int max = A[0]; // first item on our array
+      for (int i=1;i<6;i++) {
+          if (max < A[i]) 
+          {
+              max = A[i];
+              cout  << "Found larger than max " << max << "\n";
+          }
+      }
+  \end{lstlisting}
+
+\section{97. Drawing Patterns with Nested Loops}
+
+\begin{lstlisting}
+//    for(int i=0;i<5;i++)
+//        {
+//        for(int j = 0; j < i; j++)
+//            {
+//            cout<<" * ";
+//            }
+//            cout << "p";
+//            cout<<endl;
+//        }
+\end{lstlisting}
+
+
+
+\chapter{Searching}
+\section{92. Linear Search}
+
+  % Code
+  \begin{lstlisting}
+  #include <iostream>
+#include <chrono>
+using namespace std;
+
+int main() {
+    int A[] = {8,6,3,9,7,4};
+
+    // LINEAR SEARCH
+    
+    // int key = 393;
+    // for (int i=0; i<4; i++) 
+    // {
+    //     if (key == A[i]) 
+    //     {
+    //         cout << "Found the key at index " << i;
+    //         exit(0); // want to exit after you found the key
+    //     }
+    // }
+    // cout << "Couldn't find the key";
+   
+    \end{lstlisting}
+    
+\section{93. Binary Search}
+
+  \begin{lstlisting}
+
+
+    #include <iostream>
+#include <chrono>
+using namespace std;
+
+int main() {
+    int A[] = {6, 8, 13, 17, 20, 22, 25, 28, 30 ,55};
+    int max = INT_MIN;
+    cout << max << endl;
+    // Binary Search: MUST BE SORTED LIKE A BOOK
+    // int key = 30;
+    // int first = 0, last = 9;
+    // // IDEA: find a number by like searching a book
+    // // Search low, modify right hand high side; search high, modify low
+    // // Step 1: Go into the middle
+    // int middle = (first + last) / 2;
+    // if (middle == key) {
+    //     cout << "Found the key";
+    // }
+    // else if (key > A[middle]) {
+    //     first = middle;
+    //     middle = (first + last) / 2;
+    // }
+
+    // else if (key < middle) {
+    //     last = middle;
+    //     middle = (first + last) / 2;
+    // }
+    }
+
+\end{lstlisting}
+
+\chapter{108. Pointers}
+Stack vs Heap \\
+Use the stack when your variable will not be used after the current block is finished  \\
+Use the heap when the data in the variable is needed beyond the lifetime of the current function. \\ 
+
+
+
+Why do we use pointers? 
+In our regular main program. our scope is in our current program and stack. Stack variables are deleted automatically out of the scope. We can use pointers to access the heap memory. Heap memory must be deallocated manually.
+
+\section{109. Pointers example}
+How can we access the heap memory?
+
+Initializing an array puts it inside the stack and using the keyword new puts it inside the heap
+\begin{verbatim}
+int A[] = {6, 8, 13, 17, 20, 22, 25, 28, 30 ,55}; // Stack
+\end{verbatim}
+
+\begin{verbatim}
+int *p; // Heap
+p = new int[5]
+OR
+
+int *p = new int[5] // Heap
+\end{verbatim}
+new means memory allocated to the heap
+
+Whatever is in the heap, stays in the heap (as long as the program stays running). Things inside the stack will be deleted after that block has finish running 
+HEAP MEMORY MUST BE DEALLOCATED!!! (This is called a memory leak because the memory is not being used, but still using memory)
+delete []p
+\begin{lstlisting}
+int x = 10;
+int *p;
+      p = &x; // assigns address of x
+  cout << "The value of x is " << x << endl;
+      cout << "The memory location of x is " << &x << endl;
+      cout << "The value of p is " << p << endl; // some address
+      cout << "The memory location of p is " << &p << endl;
+      cout << "The value of pointer p is " << *p << endl; //what the value of the address of x is.
+\end{lstlisting}
+
+\section{TESTING LIFETIME OF AN INT (SCOPE) ON STACK}
+\begin{lstlisting}
+	int a = 3;
+	int abe; // declared
+	if (false)
+	{
+		int abe = 10;
+		abe = 3;
+	}
+	cout << abe << endl;
+\end{lstlisting}
+
+\section{110. Pointer Heap Memory Allocation}
+\begin{lstlisting}
+int *p = new int [5]; // creates a (variable) POINTER p, that points to a NEW ARRAY in the HEAP
+p[0] = 12;
+
+delete []p; // delete array in memory
+p = nullptr; // get rid of pointer; modern C++ uses nullptr, not NULL
+cout << p[0];
+\end{lstlisting}
+
+\section{Changing dynamic array size during a run}
+D
+\begin{lstlisting}
+
+// When you want a new array with a new size
+
+int *p = new int[10]; // array on the heap; dynamic array with a pointer p
+for (int i =0; i<10; i++)
+{
+	p[i] = i;
+	cout << p[i] << " ";
+}
+
+
+delete []p; // want to make array larger; delete array; avoid memory leaks
+
+p = new int[20]; // makes a new array with size 500 with existing pointer p (the arrow of pointer p is changed. now points to a different array)
+
+for (int i =0; i<20; i++)
+{
+	p[i] = i;
+	cout << p[i] << " ";
+}
+\end{lstlisting}
+
+\section{111. Pointer Arithematic, 5 operations}
+\begin{verbatim}  
+int A[S] = {2, 4, 6, 8, 10}  \\ 
+int *p = A; // p is pointing in array A
+int *q = &A[3] // pointer q is pointing to address of index 3 in array A
+\end{verbatim}
+Assume p is pointing to an array; There are five operations.
+\begin{enumerate}
+	\item p++; // Goes to next element in array
+	\item p--; // Goes to previous element in array
+	\item p = p + 2; // Goes two more elements from current position
+	\item p = p - 2;
+	\item d = q - p; // address of position q - address of position A
+\end{enumerate}
+
+
+\section{Pointer Arithematic Exercise}
+\begin{lstlisting}
+
+int A[]= {2,4,6,8,10,12};
+//    int *q = A
+
+int *p = A; // the pointer starts at the first memory location (index 0)
+// Pointer currently is at A[0]
+
+// move pointer to next location to print 4
+// p = &A[1];
+p++; // Pointer is currently at A[1]
+cout<<*p;
+
+p=p+3; // pointer will be pointing on 10
+// Pointer is currently at A[4]
+cout<< p[-4];   // print 2 without moving pointer
+
+
+\end{lstlisting}
+
+\section{Three Pointers Problems}
+Pointers may pass the compile phase, but problems may appear during runtime
+Common Problems
+\begin{enumerate}
+	\item Uninitialized Ptr (pointer is some random address)
+	\begin{verbatim}
+
+	int *p;
+	\end{verbatim}
+	Ways to solve this problem`
+	\begin{enumerate}
+		\item Existing address,
+		\item New address'
+		\item to the heap
+	\end{enumerate}
+\end{enumerate}
+
+\section{Reference (r-value vs l-value)}
+Reference does not consume any memory at all.
+r-value: variable on right hand side means,assigning data
+Example:
+\begin{lstlisting}
+a = x;
+\end{lstlisting}
+x is on the right-hand side. The \textbf{data}value of x is assigned to a.
+l-value: variable on the left hand side means, assigning address
+Example:
+\begin{lstlisting}
+x = 25;
+\end{lstlisting}
+x is on the left-hand side. The x is giving the location where the value 25 should be stored. Or the value 25 is being assigned to the address of x;
+
+\section{Functions}
+
+\subsection{Function Overloading}
+
+
+\begin{lstlisting}
+int add(int x, int y) {
+return x + y;
+}
+
+int add(int x, int y, int z) {
+return x + y + z;
+}
+
+float add(float x, float y) {
+return x + y;
+}
+
+int main(int argc, const char * argv[]) {
+int a = 10, b = 15, c;
+c = add(a,b);
+cout << c << endl;
+int myints = add(1,2);
+cout << myints << endl;
+cout << add(12.9f,8.3f) << endl;
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+int add(int x, int y) {
+	return x + y;
+}
+
+int add(int x, int y, int z) {
+	return x + y + z;
+}
+
+float add(float x, float y) {
+	return x + y;
+}
+\end{lstlisting}
+
+Let's call our int add() function.
+\begin{lstlisting}
+int a = 10, b = 15, c;
+c = add(a,b);
+cout << c << endl;
+\end{lstlisting}
+
+Let's call our float add() function
+\begin{lstlisting}
+cout << add(1.5f, 1.5f) << endl;
+\end{lstlisting}
+By default, the parameters will data type double. This is why we have the float notation (f) after the number.
+Assume we are calling add(10.5,10.5). This is an ERROR because 10.5 is recognized as a double
+
+\begin{lstlisting}
+float add(float x, float y) {
+	return x + y;
+}
+\end{lstlisting}
+
+\subsection{139. Function Templates}
+\begin{lstlisting}
+//write a Max() function template for 2 numbers
+template<class T> 
+T Max(T x, T y) 
+{
+	if (x > y) return x;
+	else return y;
+}
+\end{lstlisting}
+
+Now we call our maxim with data type int
+\begin{lstlisting}
+ cout << maxim(6 ,6) << " ";
+\end{lstlisting}
+
+
+\subsection{144. Call by Address}
+\begin{lstlisting}
+void swap(int* a, int* b) { // *a is address of x; call by address
+	int temp = *a; // *a = pointer to value of x
+	*a = *b; // *a is value deferences the pointer
+	*b = temp; //
+	cout << a << " " << b << " \n";
+	cout << *a << " " << *b << " \n";
+	
+	
+}
+
+int main(int argc, const char * argv[]) {
+	int x = 10, y = 20;
+	swap(&x, &y);
+	cout << x << " " << y << " \n";
+	cout << &x << " " << &y << " ";
+}
+
+\end{lstlisting}
+
+
+
+\subsection{144. Call by Reference}
+function is NOT called, but replaced in the main function (in-line function)
+Beause the function is replaced by the function call, avoid doing these:
+no complex logic using call by reference
+avoid using loops with call by reference
+
+\begin{lstlisting}
+void swap(int &a, int &b) { // *a is address of x; call by address
+int temp = a; // *a = pointer to value of x
+a = b; // *a is value deferences the pointer
+b = temp; //
+cout << a << " " << b << " \n";
+//    cout << *a << " " << *b << " \n";
+cout << &a << " " << &b << " \n";
+for (int i=0; i<3;i++) cout << "hi";
+
+
+}
+
+int main(int argc, const char * argv[]) {
+int x = 10, y = 20;
+swap(x, y);
+cout << x << " " << y << " \n";
+cout << &x << " " << &y << " ";
+}
+
+\end{lstlisting}
+
+\subsection{Summary of Parameter calling}
+When to use:
+\begin{enumerate}
+\item Call by value - no modification, just compute and return
+\item Call by address - function to modify parameters
+\item Call by reference - function to modify parameters (same as address), but only simple calculations (no loops)
+\end{enumerate}
+
+
+\section{157. Object Oriented Programming}
+Encapsulation
+-- putting data inside an object
+Polymorphism
+-- ability to learn other objects when you know one
+// classification - based on criteria
+
+\section{OOP Practice with Student Example}
+
+\begin{lstlisting}
+
+#include<iostream>
+using namespace std;
+class Student
+{
+    private:
+         int roll;
+         string name;
+         int mathMarks;
+         int phyMarks;
+         int chemMarks;
+    public:
+         Student(int r,string n,int m,int p,int c)
+         {
+         roll=r;
+         name=n;
+         mathMarks=m;
+         phyMarks=p;
+         chemMarks=c;
+         }
+     int total()
+     {
+         return mathMarks+phyMarks+chemMarks;
+     }
+     char grade()
+     {
+         float average=total()/3;
+         if(average > 60)
+             return 'A';
+         else if(average>=40 && average<60)
+             return 'B';
+         else
+             return 'C';
+     }
+
+};
+int main()
+{
+ int roll;
+ string name;
+ int m,p,c;
+ cout<<"Enter Roll number of a Student: ";
+ cin>>roll;
+ cout<<"Enter Name of a Student:";
+ cin>>name;
+ cout<<"Enter marks in 3 subjects";
+ cin>>m>>p>>c;
+ Student s(roll,name,m,p,c);
+ cout<<"Total Marks:"<<s.total()<<endl;
+ cout<<"Grade of Student:"<<s.grade()<<endl;
+
+}
+
+\end{lstlisting}
+
+
+\subsection{Constructors}
+Why do we have constructors? When we buy a car, it has predefined settings. (It has a color, and size.) When we create/construct an object, it should come with pre-defined settings. 
+
+Types of constructors
+\begin{enumerate}
+	\item Default
+	\item Non-parameterized
+	\item Parameterized (Rectangle(int l=0, int w=0); 
+	\item Copy constructors
+\end{enumerate}
+
+
+\subsection{Constructor Example}
+
+\begin{lstlisting}
+
+// Constructor
+Rectangle::Rectangle()
+{
+    length = 1;
+    width = 1;
+}
+Rectangle::Rectangle(int l, int w)
+{
+    length = l;
+    width = w;
+}
+// Copy Constructor
+Rectangle::Rectangle(Rectangle &r)
+{
+    length = r.length;
+    width = r.width;
+}
+// Facilitator
+int Rectangle::area() {
+    return length * width;
+}
+// Enquiry
+bool Rectangle::isSquare()
+{
+    return length == width;
+}
+// Destructor
+Rectangle::~Rectangle()
+{
+    cout << "Rectangle destroyed\n";
+}
+
+\end{lstlisting}
+
+\subsection{Summary of Constructors}
+Here is an example of a full class.
+\begin{lstlisting}
+class Rectangle {
+    // Data Hiding to prevent user-errors
+    private:
+        int length;
+        int width;
+    public:
+        // Constructors
+        Rectangle(); // no parameters (default)
+        Rectangle(int l, int w); // set default arguments
+        Rectangle(Rectangle &rect); // copy constructor
+        // Mutators - change values or properties
+        void setLength(int l);
+        void setWidth(int w);
+        // Accessor - access data/ reading properties
+        int getLength() {return length;} // this is an inline function (copy/pasted machine code)
+        inline int getWidth();
+        // Facilitators - uses the data and calculates
+        int area();
+        int perimeter();
+        // Enquiry
+        bool isSquare();
+        // Destructor
+        ~Rectangle();
+};
+
+\end{lstlisting}
+
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+
+class Complex {
+    private:
+        int real;
+        int imag;
+
+    public:
+        Complex(int r = 0, int i = 0)
+        {
+            real = r;
+            imag = i;
+        }
+        Complex add(Complex x)
+        {
+        Complex temp;
+        temp.real = real + x.temp;
+        temp.imag = imag + x.imag;
+            return temp;
+        }
+};
+
+struct Demo {
+    int x;
+    int y;
+    void Display() {
+        cout << "Hiiii\n";
+    }
+};
+
+
+class Rectangle {
+    // Data Hiding to prevent user-errors
+    private:
+        int length;
+        int width;
+    public:
+        // Constructors
+        Rectangle(); // no parameters (default)
+        Rectangle(int l, int w); // set default arguments
+        Rectangle(Rectangle &rect); // copy constructor
+        // Mutators - change values or properties
+        void setLength(int l);
+        void setWidth(int w);
+        // Accessor - access data/ reading properties
+        int getLength() {return length;} // this is an inline function (copy/pasted machine code)
+        inline int getWidth();
+        // Facilitators - uses the data and calculates
+        int area();
+        int perimeter();
+        // Enquiry
+        bool isSquare();
+        // Destructor
+        ~Rectangle();
+};
+
+int main() {
+
+//    Demo d1;
+//    d1.x = 10;
+//    d1.y = 5;
+//    d1.Display();
+//    d1.Display();
+    
+    Rectangle r(10,10);
+    Rectangle r1(10,10);
+    Rectangle r2;
+    cout << "Area is " << r1.area() << "\n";
+
+    if (r1.isSquare()) {
+        cout << "Yes" << "\n";
+    }
+        r.setLength(3);
+        r.setWidth(4);
+        cout << r.area() << endl;
+        Rectangle::Rectangle(r2(r));
+}
+
+\end{lstlisting}
+
+
+\subsection{In-line Function}
+In-line functions are functions that are embedded in the machine code with the main() instead of separate from the main function. The function machine code is copy and pasted in the function call.
+\begin{lstlisting}
+// Example of definitions of an in-line function
+int getLength() 
+{
+return length;
+}
+
+inline int getLength() 
+
+\end{lstlisting}
+
+
+\section{Struct vs Class}
+Struct by default, everything is public. In Class, everything by default is private (you have to write public: )
+In C, Struct could not take in functions. In C++, Struct can take in functions.
+
+
+
+\section{Inheritance}
+
+Here the symbol : means extended. The Derived class is an extension or adding onto the existing Base class.
+\begin{lstlisting}
+class Derived : class Base
+\end{lstlisting}
+
+
+
+
+
+
+Process vs threading
+Threading is a subset of processes.
+The compiler automatically recognizes th
+Threading is has multiple 
+
+
+
+
+\section{Pointers Review}
+\begin{enumerate}
+	\item Pointers are good for accessing the heap memory
+	\item Pointers are good for accessing resources outside the program (monitor, keyboard, internet connection)
+	\item Pointers are good for parameter passing
+\end{enumerate}
+
+\end{document}

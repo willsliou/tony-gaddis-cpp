@@ -1,0 +1,274 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref} % hyperlinks
+\usepackage{longtable}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\useunder{\uline}{\ul}{} 
+`'
+\usepackage{tikz} % for array DS
+\usetikzlibrary{calc} % for array DS
+
+\title{C++ Basics (Abdul Bari)}
+\author{Wills Liou}
+\date{today}
+
+\maketitle
+\begin{abstract}
+	Summary of C++ Basics by Abdul Bari (Udemy); This took a really long time.
+\end{abstract}
+
+
+\begin{document}
+ cout << "Hello World" << endl;	 
+	\#include <iostream>
+	iostream is a library
+	cout stands for "console out"
+	COUT and CIN are OBJECTS
+		
+	
+	<< is an insertion operator
+	:: is a scope resolution
+	
+	= is an "ASSIGNMENT OPERATOR"
+	== is a "comparison operator"
+	
+	< is less than
+	5 < 3    five is less than 3
+	
+	> is greater than
+	2 > 1
+	2 is greater than 1
+	
+	Program is set of two ingredients: 
+		
+	1. data
+	2. operations performed on data
+
+
+	% MEMORY	
+	1 byte = 8 bits
+	
+	% BYTES
+	Maximum integer in 1 byte (8 bits) is 255.
+	
+	\href{https://www.sciencedirect.com/topics/engineering/binary-word}{Formula for maximum binary value for N bits} \\
+	Formula to calculate maximum decimal value for N bits.
+		$$M = 2^{N} - 1$$
+	Example:	
+		$$255 = 2^{8} - 1$$
+
+
+\chapter{25. Primitive Data Types}
+
+\begin{table}[]
+\begin{tabular}{ccc}
+\hline
+{Data Type}               & {Size (bytes) }               & {Range}               \\ \hline
+\textbf{int}            & \textbf{2 or 4}            & \textbf{-32,768 -to 32,767}      \label{int}   \\ 
+\textit{float}                    &4                      &$-3.4 \times 10^{-38}$ to $3.4 \times 10^{38}$     \label{float}             \\
+\textit{double}                     &8                      & $-1.7 \times 10^{-308}$ to $1.7 \times 10^{308}$       \label{double}     \\ \hline
+\textbf{char}            & \textbf{1}            & \textbf{-128 to 127}            \\
+bool                     &undefined                      &true/false                      \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} 
+\end{tabular}
+\end{table}
+
+\textbf{How to memorize range for \ref{float} floats and \ref{double} doubles} \\
+Realize that doubles have an extra \textbf{zero} in the power \\
+floats are \textbf{$10^{38}$} and doubles are \textbf{$10^{308}$}
+
+\textbf{Float range}: $-3.4 \times 10^{-38}$ to $3.4 \times 10^{38}$ \\
+\textbf{Double range}:  $-1.7 \times 10^{-308}$ to $1.7 \times 10^{308}$ \\
+\textbf{multiply} double's range and get float's number;  \\
+$1.7 \times 2 = 3.4$
+Other data types: 1. long 2.long long (for really long decimals)
+
+
+\section{Proving the int range is {-32,768 -to 32,767} } 
+\begin{table}
+\centering
+\begin{tabular}{lllllllllllllllllll}
+ &16  &15  &  &  &  &  &  &  &  &  &  &  &  &  &  &   
+\end{tabular}
+\end{table}
+
+This is our array for 2 bytes (16 bits) \\
+Assume the numbers inside each index are it's index value \\
+Notation:
+Most significant byte (MSB), Least significant byte (LSB) \\
+-ve stands for negative
++ve stands for positive
+
+Known: 1 byte = 8 bits. \\
+If we have two bytes, we will have 16 bits. Let's assume that our int data type takes in two bytes (in some old compiler).
+
+\newcounter{nodeidx}
+\setcounter{nodeidx}{1}
+\newcommand{\nodes}[1]{%
+    \foreach \num in {#1}{
+      \node[minimum size=6mm, draw, rectangle] (\arabic{nodeidx}) at (\arabic{nodeidx},0) {\num};
+      \stepcounter{nodeidx}
+    }
+}
+\newcommand{\brckt}[4]{% from, to, lvl, text
+  \draw (#1.south west) ++($(-.1, -.1) + (-.1*#3, 0)$) -- ++($(0,-.1) + (0,-#3*1.25em)$) -- node [below] {#4} ($(#2.south east) + (.1,-.1) + (.1*#3, 0) + (0,-.1) + (0,-#3*1.25em)$) -- ++($(0,#3*1.25em) + (0,.1)$);%
+}
+  \begin{tikzpicture}
+    \pgftransparencygroup
+    \nodes{15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0}
+    \endpgftransparencygroup
+    \pgfsetstrokeopacity{0.5}
+    \pgfsetfillopacity{0.5}
+    \pgftransparencygroup
+    \endpgftransparencygroup
+    \pgfsetstrokeopacity{.75}
+    \pgfsetfillopacity{.75}
+    \pgftransparencygroup
+    \brckt{1}{1}{0}{MSB (+) or (-)}
+    \endpgftransparencygroup
+    \pgfsetfillopacity{0.5}
+    \pgfsetstrokeopacity{0}
+    \pgftransparencygroup
+	\brckt{2}{16}{0}{15 bits left}
+	 \brckt{16}{16}{0}{LSB}
+    \endpgftransparencygroup
+    \pgfsetstrokeopacity{0.5}
+    \pgftransparencygroup
+    \brckt{1}{16}{1}{16 bits total}
+    \endpgftransparencygroup
+  \end{tikzpicture}
+
+  \newcommand{\lep}{\hspace*{.5em}}
+  \noindent
+  $\fbox{5} \lep \fbox{2} \lep \fbox{7} \lep \fbox{-5} \lep \fbox{16} \lep \fbox{12}$
+
+\begin{enumerate}
+	\item Assume 2 bytes (16 bits)
+	\item Most significant bit (MSB) reserves the first spot for the sign; In other words, MSB takes one spot for a (1) -ve or (0) +ve
+	\item Excluding the MSB, there are 15 bits left for the integer.
+	\item Therefore $2^{15} = 32768$	
+		\begin{enumerate}
+			\item $32,768$ is the maximum number from the \textit{range 1 to 32,768}
+			\item So, our int data type can take in a max number, 32,768.
+		\end{enumerate}
+	\item If we want a range starting from 0, our range is now \textit{range of 0 to 32,767}
+	\item   Range visually represented as:  0     \hspace{1cm}  ...     32,767
+	\item Reminder: we know that one bit is reserved at MSB (first index) for positive and negative signs. 
+	\item  So if we include the negative side from -32767 to -0, our range looks like this
+	\item -32,767  \hspace{1cm}        -0 \hspace {1cm} 0 \hspace {1cm} 32,767
+	
+	\item But realize that -0 does not exist; we add one more value to the negative side to account for our -0
+	\item -32,767 + 1  \hspace {1cm} 0 \hspace {1cm} 32,767	
+	\item -32,768  \hspace {1cm} 0 \hspace {1cm} 32,767
+	\item Therefore our int data type range is from \textit{-32,768 to 0 to 32,767}
+\end{enumerate}	
+
+Question at step \#9: How do we have enough memory for the negative side if our maximum number is 32,768? \\
+Answer: Look at two's complement; when we reach our one more than maximum value of 32,768, (e.g. 32,769), we actually overflow and get -1. 
+
+\href{https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html}{Two's Complement} \\
+
+In practice, it looks like this:
+\begin{center}
+\begin{table}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} % 'c' stands for center; 'l' stands for left align
+        \hline
+        ~1 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~0 & ~1 \\
+        \hline
+    \end{tabular}
+\end{table}
+\end{center}
+
+% copy pasta from https://tex.stackexchange.com/questions/79369/formatting-table-border-and-text-alignment-in-latex-table
+\newdimen\boxitspace\boxitspace=3pt% boxit from eplain
+\long\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern\boxitspace\vbox{%
+  \kern\boxitspace\parindent0pt#1\kern\boxitspace}%
+  \kern\boxitspace\vrule}\hrule}}
+\def\aryitem#1{\boxit{\hbox to 1.4em{\hfil#1\hfil}}}% change 1.4em if needed
+\let\MS\multispan% shorten a little
+\halign{&\thinspace\aryitem{$\mathstrut#$}\thinspace\cr
+  5&2&7&-5&16&12&\omit\quad&?&?&?&?&?&?\cr
+  \MS6\upbracefill&\omit&\MS6\upbracefill\cr
+  \MS6\hfill size $=6$\hfill&\omit&\MS6\hfill free space\hfill\cr
+  \MS{13}\upbracefill\cr
+  \MS{13}\hfill capacity $=12$\hfill\cr
+}
+\bye
+
+
+\section{Proving the char range is -128 to 127}
+  \begin{enumerate}
+    \item The data type, char, is 1 byte or 8 bits.
+    \item We reserve the first bit (MSB) for the positive and negative signs.
+    \item Therefore, we are left with 7 bits.
+    \item So we have $2^{7} = 128$
+    \begin{enumerate}
+      \item our values for char is the range \textit{1 to 128}
+    \end{enumerate}
+    \item When we begin at 0, our range becomes \textit{0 to 127}
+    \item To account for the negative side, we have \textit{-127  -0  0  127}
+    \item To fix the -0, we add one more value to our negative side, our final range is \textit{-127  0  127}
+  \end{enumerate} 
+   This had many similiar to our int range proof.
+
+  For unsigned(only positive) integers, add back the first bit that stores the negative and positive values. Aka. use all 16 bits (2 bytes in integer data type)
+  One way:
+  \begin{enumerate}
+  \item Instead of $2^{15} = 32,768$, we will have $2^{16} = 65,536$.
+  \item With a range starting from 0, \textit{0 to 65,535}
+  \item Therefore, unsigned int has a range from \textit{0 to 65,535}
+  \end{enumerate}
+  Other way: Add the min and max values of an int range \textit{-32,768 to 0 to 32,767}
+  \begin{enumerate}
+    \item $32spo
+    q ,768 + 32,767 = 65,535$
+    \item Therefore, unsigned int has a range from \textit{0 to 65,535}
+  \end{enumerate}
+
+  \section{*** IMPORTANT REMEMBER THESE: ***}
+   a = 97 ... z = 122; 0 -> 49 ... 9 -> 57
+  \begin{center}
+    \begin{tabular}{ c c c }
+    A = 65 & a = 97 & '0' = 48 \\
+    B = 66 & b = 98 & '1' = 49 \\
+      .                     \\  
+      . \\
+      .\\ 
+    Z = 90
+    \end{tabular}
+  \end{center}
+
+
+
+  \begin{center}
+    Data Types
+  \begin{tabular}{ c c }
+    Data Type & Range value
+    int & -37,768 to 37,767 (15 bits used with 1 reserved) \\
+    char & -128 to 127 (8 bits used with 1 reserved)
+    unsigned int & 0 to 65,535 (all 16 bits or 2 bytes are used)
+    unsigned char & 0 to 255 (all 8 bits are used)
+    long int & if int is 2 bytes, then long int is 4 bytes or (if int is 4 bytes, then long int is 8 bytes
+    long float (does not exist, it is a double) 
+    long double  10 bytes
+
+  \end{tabular}
+\end{center}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,47 @@
+// setPrecision, setw practice
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+// struct Time { //structure declaration
+//     double milliseconds;
+//     int seconds;
+//     int minutes;
+//     int hours;
+// };
+int main() {
+    // Time Day1; //structure initialization, definition
+//   int value = 1.234;
+  
+//   int value2 = 1234;
+//   std::cout << std::setw(10)<< value2 << value;
+
+
+//   double value = 0.234;
+// std::cout << std::setprecision(2)<<value;
+// setw affects only 1 variable
+  // setw(width) stands for set width
+
+
+ // Get the sales for each day.
+ double day1, day2, day3, total;
+ cout << "Enter the sales for day 1: ";
+cin >> day1;
+ cout << "Enter the sales for day 2: ";
+ cin >> day2;
+ cout << "Enter the sales for day 3: ";
+ cin >> day3;
+
+ // Calculate the total sales.
+ total = day1 + day2 + day3;
+
+ // Display the sales figures.
+ cout << "\nSales Figures\n";
+ cout << "-------------\n";
+ cout << setprecision(5);
+ cout << "Day 1: " << setw(5) <<day1<<endl;
+ cout << "Day 2: " << setw(6) <<day2<<endl;
+ cout << "Day 3: " << setw(7) <<day3<<endl;
+ cout << "Total: " << setw(8) <<total<<endl;
+ return 0;
+ }

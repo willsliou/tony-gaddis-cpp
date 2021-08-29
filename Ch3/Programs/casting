@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <typeinfo>
+using namespace std;
+
+
+int main() {
+// Prededence( ranking )
+// NOTE: any operation changes it to the higher Prededence
+// long double
+// double (2x larger than float)
+// float
+// unsigned long long int (positive)
+// long long int
+// unsigned long int  (positive)
+// long int
+// unsigned int
+// int
+
+
+  // CASTING
+  // changing double to int
+  // NOTE: fractional part is truncated
+
+
+
+//   double doubleNumber = 3.7;
+//   int intNumber;
+//   intNumber = static_cast<int>(doubleNumber);
+// This program's end result (avgbooks) should be changed to a double. If you divide 30 by 7, you will get a 4. You want a decimal like 4.17
+
+  int books, months;
+  double avgbooks;
+
+  cout << "How many books do you read per month? ";
+  cin >> books;
+
+  cout << "How many months? ";
+  cin >> months;
+
+  cout << typeid(avgbooks).name() <<endl;
+  avgbooks = static_cast<double>(books)/months; 
+  // here we set books to be a double. double / int = double
+
+
+  cout << "Your average number of books per month is: " << avgbooks << endl;
+
+
+}

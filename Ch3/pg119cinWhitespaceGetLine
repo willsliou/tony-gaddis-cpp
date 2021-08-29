@@ -1,0 +1,27 @@
+// Why you should use getline instead of cin
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+// fixed - starts counting at decimal point
+
+//showpoint - shows trailing 0's
+
+// careful with cin
+// cin stops reading when encountering whitespace; the input is still there and is put into the next cin 
+int main() {
+    string name;
+    string city;
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Enter your city: ";
+    cin >> city;
+
+    cout << "name" << endl << city;
+
+
+    // double var = 3.2;
+    // cout << setprecision(39)<< showpoint << var;
+ }

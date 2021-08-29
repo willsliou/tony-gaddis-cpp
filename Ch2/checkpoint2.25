@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  const double number = 32.32;
+  cout << number << endl;
+
+  const double e = 2.71828;
+  double minutes_in_a_year = 5.256e5;
+  double accel_constant_ft = 32.2;
+  double accel_constant_meters = 9.8;
+
+  double meters_in_a_mile = 1609;
+
+  cout << e << endl;
+  cout << minutes_in_a_year << endl;
+  cout << accel_constant_ft << endl;
+  cout << accel_constant_meters << endl;
+
+
+}

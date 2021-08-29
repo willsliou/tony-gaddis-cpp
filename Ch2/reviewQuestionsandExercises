@@ -1,0 +1,73 @@
+// End of Chapter 2: Review Questions and Exercises
+
+characters use ' '
+string literals use " "
+
+NOTE TO SELF: operators are the ones "operating (like +, -), operands are the values being operated on (5 + 5, 5 are the operands)
+1. Unary requires 1 operand like increment and negative, negations (x++, -x, !x)
+  Binary operators require 2 operands each. (5 + 5) The plus operator requires two operands (the two 5's).
+  Ternary operators require 3 operands each. (if else in C++)
+
+2. double age, temp, weight;  
+3. int months = 2, days, years = 3;
+
+  Strange questions about executing undefined variables on repl.it:
+  1. when you run with return 0, you get back the max of the int (32765). Why do we get back the max value? variable days isn't defined?
+  
+  int main() {
+    cout << days << endl; 
+    return 0;
+  }
+  
+  2. but when you run it WITHOUT return 0, you get back 0 Is it returning back the status? (0 is the status of the program, it has finished running)
+    
+    int main() {
+      cout << days << endl;
+    }
+    
+ 4.   
+ A) 
+  double a;
+  double b = a + 2;
+ B) 
+  double b;
+  double a = b * 4;
+ C) 
+  double a;
+  double b = a / 3.14;
+ D) 
+  double b;
+  double a = b - 8;
+ E)
+  double a = 27;
+ F)
+  char c = 'K';
+ G)
+  char c = 66; // ASCII A = 65
+  
+5. /* */ is multi-line comments
+6. // is single line comments
+7. "\n" or << endl; at each cout statement
+8. 
+9. C - semicolon
+10. C
+11. B
+12. A
+13. B
+14. A
+15. B, C
+16. C, D
+18. 
+A) 3.287e6
+B) -978.65e12
+C) 7.65491e-3
+D) 058710.23e-4
+19. A
+20. C
+21. A
+22. T
+23. Variable names must begin with letter of alphabet or underscore _
+24. Variable names can be 1 to 255 characters
+25. T
+26. ?
+

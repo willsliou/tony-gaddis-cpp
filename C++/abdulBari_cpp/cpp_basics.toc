@@ -1,0 +1,48 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Java vs C++}{iii}{chapter*.2}% 
+\contentsline {chapter}{Deep Understanding of Syntax}{v}{chapter*.3}% 
+\contentsline {section}{\numberline {0.1}Summary}{v}{section.0.1}% 
+\contentsline {section}{\numberline {0.2}Formula to calculate maximum decimal value for N bits.}{v}{section.0.2}% 
+\contentsline {chapter}{25. Primitive Data Types}{vii}{chapter*.4}% 
+\contentsline {section}{\numberline {0.3}Proving the int range is {-32,768 -to 32,767} }{vii}{section.0.3}% 
+\contentsline {section}{\numberline {0.4}Proving the char range is -128 to 127}{ix}{section.0.4}% 
+\contentsline {section}{\numberline {0.5}Remember these ASCII Codes}{x}{section.0.5}% 
+\contentsline {section}{\numberline {0.6}Division with data types}{x}{section.0.6}% 
+\contentsline {section}{\numberline {0.7}Operator precedence}{x}{section.0.7}% 
+\contentsline {section}{\numberline {0.8}Random Numbers}{x}{section.0.8}% 
+\contentsline {chapter}{35. Increment and Decrement}{xiii}{chapter*.5}% 
+\contentsline {section}{\numberline {0.9}Prefix vs Postfix}{xiii}{section.0.9}% 
+\contentsline {section}{\numberline {0.10}39. Bitwise Operators}{xiii}{section.0.10}% 
+\contentsline {section}{\numberline {0.11}Bitwise Operations}{xiv}{section.0.11}% 
+\contentsline {section}{\numberline {0.12}78. Finding Factorial}{xiv}{section.0.12}% 
+\contentsline {section}{\numberline {0.13}Enum and Typedef}{xiv}{section.0.13}% 
+\contentsline {chapter}{For Loops}{xvii}{chapter*.6}% 
+\contentsline {section}{\numberline {0.14}89. For each loop}{xvii}{section.0.14}% 
+\contentsline {section}{\numberline {0.15}91. Finding maximum in Array}{xviii}{section.0.15}% 
+\contentsline {section}{\numberline {0.16}97. Drawing Patterns with Nested Loops}{xviii}{section.0.16}% 
+\contentsline {chapter}{Searching}{xix}{chapter*.7}% 
+\contentsline {section}{\numberline {0.17}92. Linear Search}{xix}{section.0.17}% 
+\contentsline {section}{\numberline {0.18}93. Binary Search}{xix}{section.0.18}% 
+\contentsline {chapter}{108. Pointers}{xxi}{chapter*.8}% 
+\contentsline {section}{\numberline {0.19}109. Pointers example}{xxi}{section.0.19}% 
+\contentsline {section}{\numberline {0.20}TESTING LIFETIME OF AN INT (SCOPE) ON STACK}{xxii}{section.0.20}% 
+\contentsline {section}{\numberline {0.21}110. Pointer Heap Memory Allocation}{xxii}{section.0.21}% 
+\contentsline {section}{\numberline {0.22}Changing dynamic array size during a run}{xxii}{section.0.22}% 
+\contentsline {section}{\numberline {0.23}111. Pointer Arithematic, 5 operations}{xxiii}{section.0.23}% 
+\contentsline {section}{\numberline {0.24}Pointer Arithematic Exercise}{xxiii}{section.0.24}% 
+\contentsline {section}{\numberline {0.25}Three Pointers Problems}{xxiv}{section.0.25}% 
+\contentsline {section}{\numberline {0.26}Reference (r-value vs l-value)}{xxiv}{section.0.26}% 
+\contentsline {section}{\numberline {0.27}Functions}{xxiv}{section.0.27}% 
+\contentsline {subsection}{\numberline {0.27.1}Function Overloading}{xxiv}{subsection.0.27.1}% 
+\contentsline {subsection}{\numberline {0.27.2}139. Function Templates}{xxv}{subsection.0.27.2}% 
+\contentsline {subsection}{\numberline {0.27.3}144. Call by Address}{xxvi}{subsection.0.27.3}% 
+\contentsline {subsection}{\numberline {0.27.4}144. Call by Reference}{xxvi}{subsection.0.27.4}% 
+\contentsline {section}{\numberline {0.28}Summary of Parameter calling}{xxvii}{section.0.28}% 
+\contentsline {section}{\numberline {0.29}157. Object Oriented Programming}{xxvii}{section.0.29}% 
+\contentsline {section}{\numberline {0.30}OOP Practice with Student Example}{xxvii}{section.0.30}% 
+\contentsline {subsection}{\numberline {0.30.1}Constructors}{xxviii}{subsection.0.30.1}% 
+\contentsline {subsection}{\numberline {0.30.2}Constructor Example}{xxviii}{subsection.0.30.2}% 
+\contentsline {subsection}{\numberline {0.30.3}Summary of Constructors}{xxix}{subsection.0.30.3}% 
+\contentsline {subsection}{\numberline {0.30.4}In-line Function}{xxxi}{subsection.0.30.4}% 
+\contentsline {section}{\numberline {0.31}Struct vs Class}{xxxii}{section.0.31}% 
+\contentsline {section}{\numberline {0.32}Inheritance}{xxxii}{section.0.32}% 

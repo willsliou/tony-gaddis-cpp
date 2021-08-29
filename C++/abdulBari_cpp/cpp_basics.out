@@ -1,0 +1,47 @@
+\BOOKMARK [0][-]{chapter*.2}{Java vs C++}{}% 1
+\BOOKMARK [0][-]{chapter*.3}{Deep Understanding of Syntax}{}% 2
+\BOOKMARK [1][-]{section.0.1}{Summary}{chapter*.3}% 3
+\BOOKMARK [1][-]{section.0.2}{Formula to calculate maximum decimal value for N bits.}{chapter*.3}% 4
+\BOOKMARK [0][-]{chapter*.4}{25. Primitive Data Types}{}% 5
+\BOOKMARK [1][-]{section.0.3}{Proving the int range is -32,768 -to 32,767 }{chapter*.4}% 6
+\BOOKMARK [1][-]{section.0.4}{Proving the char range is -128 to 127}{chapter*.4}% 7
+\BOOKMARK [1][-]{section.0.5}{Remember these ASCII Codes}{chapter*.4}% 8
+\BOOKMARK [1][-]{section.0.6}{Division with data types}{chapter*.4}% 9
+\BOOKMARK [1][-]{section.0.7}{Operator precedence}{chapter*.4}% 10
+\BOOKMARK [1][-]{section.0.8}{Random Numbers}{chapter*.4}% 11
+\BOOKMARK [0][-]{chapter*.5}{35. Increment and Decrement}{}% 12
+\BOOKMARK [1][-]{section.0.9}{Prefix vs Postfix}{chapter*.5}% 13
+\BOOKMARK [1][-]{section.0.10}{39. Bitwise Operators}{chapter*.5}% 14
+\BOOKMARK [1][-]{section.0.11}{Bitwise Operations}{chapter*.5}% 15
+\BOOKMARK [1][-]{section.0.12}{78. Finding Factorial}{chapter*.5}% 16
+\BOOKMARK [1][-]{section.0.13}{Enum and Typedef}{chapter*.5}% 17
+\BOOKMARK [0][-]{chapter*.6}{For Loops}{}% 18
+\BOOKMARK [1][-]{section.0.14}{89. For each loop}{chapter*.6}% 19
+\BOOKMARK [1][-]{section.0.15}{91. Finding maximum in Array}{chapter*.6}% 20
+\BOOKMARK [1][-]{section.0.16}{97. Drawing Patterns with Nested Loops}{chapter*.6}% 21
+\BOOKMARK [0][-]{chapter*.7}{Searching}{}% 22
+\BOOKMARK [1][-]{section.0.17}{92. Linear Search}{chapter*.7}% 23
+\BOOKMARK [1][-]{section.0.18}{93. Binary Search}{chapter*.7}% 24
+\BOOKMARK [0][-]{chapter*.8}{108. Pointers}{}% 25
+\BOOKMARK [1][-]{section.0.19}{109. Pointers example}{chapter*.8}% 26
+\BOOKMARK [1][-]{section.0.20}{TESTING LIFETIME OF AN INT \(SCOPE\) ON STACK}{chapter*.8}% 27
+\BOOKMARK [1][-]{section.0.21}{110. Pointer Heap Memory Allocation}{chapter*.8}% 28
+\BOOKMARK [1][-]{section.0.22}{Changing dynamic array size during a run}{chapter*.8}% 29
+\BOOKMARK [1][-]{section.0.23}{111. Pointer Arithematic, 5 operations}{chapter*.8}% 30
+\BOOKMARK [1][-]{section.0.24}{Pointer Arithematic Exercise}{chapter*.8}% 31
+\BOOKMARK [1][-]{section.0.25}{Three Pointers Problems}{chapter*.8}% 32
+\BOOKMARK [1][-]{section.0.26}{Reference \(r-value vs l-value\)}{chapter*.8}% 33
+\BOOKMARK [1][-]{section.0.27}{Functions}{chapter*.8}% 34
+\BOOKMARK [2][-]{subsection.0.27.1}{Function Overloading}{section.0.27}% 35
+\BOOKMARK [2][-]{subsection.0.27.2}{139. Function Templates}{section.0.27}% 36
+\BOOKMARK [2][-]{subsection.0.27.3}{144. Call by Address}{section.0.27}% 37
+\BOOKMARK [2][-]{subsection.0.27.4}{144. Call by Reference}{section.0.27}% 38
+\BOOKMARK [1][-]{section.0.28}{Summary of Parameter calling}{chapter*.8}% 39
+\BOOKMARK [1][-]{section.0.29}{157. Object Oriented Programming}{chapter*.8}% 40
+\BOOKMARK [1][-]{section.0.30}{OOP Practice with Student Example}{chapter*.8}% 41
+\BOOKMARK [2][-]{subsection.0.30.1}{Constructors}{section.0.30}% 42
+\BOOKMARK [2][-]{subsection.0.30.2}{Constructor Example}{section.0.30}% 43
+\BOOKMARK [2][-]{subsection.0.30.3}{Summary of Constructors}{section.0.30}% 44
+\BOOKMARK [2][-]{subsection.0.30.4}{In-line Function}{section.0.30}% 45
+\BOOKMARK [1][-]{section.0.31}{Struct vs Class}{chapter*.8}% 46
+\BOOKMARK [1][-]{section.0.32}{Inheritance}{chapter*.8}% 47

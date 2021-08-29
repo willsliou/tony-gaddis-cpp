@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <typeinfo>
+using namespace std;
+
+
+int main() {
+
+
+//   int books, months;
+//   double avgbooks;
+
+//   cout << "How many books do you read per month? ";
+//   cin >> books;
+
+//   cout << "How many months? ";
+//   cin >> months;
+
+//   cout << typeid(avgbooks).name() <<endl;
+//   // here we set books to be a double. double / int = double
+//   avgbooks = static_cast<double>(books)/months; // returns 4.721312; avgbooks is double 
+//   avgbooks = static_cast<double>(books/months); // returns 4; avgbooks is int
+  
+  // ============================================================================
+    //change value in variable number to char
+    
+    int number = 64;
+    cout << sizeof(number) << static_cast<char>(number) << endl << sizeof(number) << endl;
+    cout <<  sizeof(number);
+    
+
+    // cout << typeid(number).name() << static_cast<char>(number) << endl << typeid(number).name() <<endl;
+    // cout <<  typeid(number).name();
+
+
+    double yaboiisdouble = 3.77434;
+    
+
+//   cout << "Your average number of books per month is: " << avgbooks << endl;
+
+  
+
+
+}

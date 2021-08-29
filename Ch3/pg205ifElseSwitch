@@ -1,0 +1,27 @@
+// if,else, switch statements
+#include <iostream>
+#include <iomanip> //setw, setprecision
+#include <string>
+#include <cmath>
+#include <cstdlib> //rand srand
+#include <ctime> // time from jan 1 1980
+using namespace std;
+int main() {
+    // x > y ? z = 1 : z = 20
+    // temp > 45 ? population = base*10 : population = base * 2
+
+    // if j = k>90
+    // (x < 0) ? (cout << "Hi") : (z - 20);
+
+    char choice;
+    cin >> choice;
+    switch (choice) {
+        case 'A': cout << "Choose A";
+        break;
+        case 'B': cout << "Choose B";
+        break;
+        case 'C': cout << "Choose C";
+        break;
+        default: cout << "You didn't enter any";
+    }
+}   
